@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>빛은 어떻게 퍼질까? · 빛의 거리 법칙</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="classroom.css">
 </head>
 <body>
   <header><a class="brand" href="./"><span class="brand-mark">✳</span> 작은 과학실</a><span class="lesson">중학교 과학 <span> / </span> 빛과 에너지</span></header>
@@ -12,12 +13,22 @@
     <div class="eyebrow">LIGHT LAB <span>01</span></div>
     <h1>빛은 어떻게 퍼질까?</h1>
     <p class="intro">같은 빛도 멀어지면 옅어집니다. 거리를 움직이며 그 이유를 발견해 보세요.</p>
+    <div class="lesson-toolbar"><div class="view-switch" role="group" aria-label="설명 모형 선택"><button id="area-view" aria-pressed="true">① 면적으로 이해하기</button><button id="sphere-view" aria-pressed="false">② 구면으로 확인하기</button></div><button id="fullscreen">⛶ 전체화면</button></div>
+    <div class="big-relation" aria-live="polite"><span>거리 <strong id="hero-distance">2배</strong></span><i>→</i><span>면적 <strong id="hero-area">4배</strong></span><i>→</i><span>한 칸이 받는 빛 <strong id="hero-intensity">1/4배</strong></span></div>
     <div class="workspace">
       <section class="simulation" aria-label="빛의 확산 시뮬레이션">
-        <div class="scene-top"><div><span class="live-dot"></span> 빛의 확산 관찰 <small>구면 모형</small></div><button id="pause" aria-pressed="false">Ⅱ 일시정지</button></div>
-        <canvas id="scene" aria-label="점광원에서 방출된 광선이 구면으로 퍼지는 모습"></canvas>
-        <div class="scene-key"><span><i class="gold"></i> 같은 방향으로 나가는 빛 묶음</span><span><i class="mint"></i> 관찰 거리의 구면</span></div>
-        <div class="scene-note">빛은 모든 방향으로 퍼져요. <strong>전체 빛의 양은 그대로!</strong></div>
+        <div id="area-panel">
+          <h2>같은 빛 묶음, 더 넓어진 면적</h2><p class="area-description">두 그림의 빛은 모두 <strong>144점</strong> · 테두리 한 칸의 크기도 같아요.</p>
+          <div class="area-comparison"><div><h3>1 m에서 <span>1칸</span></h3><canvas id="area-near" aria-label="1미터에서 한 칸에 빛 144점"></canvas><p>한 칸에 <strong>144점</strong></p></div><div><h3><span id="grid-distance">2 m</span>에서 <span id="grid-area">4칸</span></h3><canvas id="area-far" aria-label="현재 거리에서 같은 빛 144점이 더 넓은 면적으로 퍼지는 모습"></canvas><p>한 칸에 평균 <strong id="grid-count">36점</strong></p></div></div>
+          <div class="area-sequence">1 m → 1칸 <span> / </span> 2 m → 4칸 <span> / </span> 3 m → 9칸 <span> / </span> 4 m → 16칸</div>
+          <p class="model-note">구면의 작은 영역을 평면 격자로 펼친 설명용 모형입니다.<br>두 그림은 같은 배율로 함께 확대됩니다. 밝은 테두리는 같은 면적의 한 칸입니다.</p>
+        </div>
+        <div id="sphere-panel" hidden>
+          <div class="scene-top"><div><span class="live-dot"></span> 빛은 구면 전체로 퍼져요</div><button id="pause" aria-pressed="false">Ⅱ 일시정지</button></div>
+          <canvas id="scene" aria-label="선택한 거리의 구면과 같은 방향으로 퍼지는 빛 묶음"></canvas>
+          <div class="scene-key"><span><i class="gold"></i> 같은 빛 묶음</span><span><i class="mint"></i> 현재 거리의 구면 · 표면적 4πr²</span></div>
+          <div class="scene-note">구는 빛을 막지 않는 가상의 면입니다. <strong>전체 빛의 양은 그대로!</strong></div>
+        </div>
       </section>
       <aside class="controls">
         <div class="section-label">01 <span>거리를 바꿔 보세요</span></div>
